@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Đăng nhập - Đăng kí</title>
+<link rel="stylesheet" type="text/css" href="css\home.css">
+  <link rel="stylesheet" type="text/css" href="css\bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css\bootstrap.min.css.map">
+  <link rel="stylesheet" type="text/css" href="font-awesome/css/all.css">
+  <link rel="shortcut icon" type="text/css" href="img/logo1.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" media="screen" href="search_box.css">
+  <script src="main.js"></script>
+  <link rel="stylesheet" type="text/css" href="js\bootstrap.js">
+  <link rel="stylesheet" type="text/css" href="js\bootstrap.js.map">
+  <link rel="stylesheet" type="text/css" href="js\bootstrap.min">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style type="text/css">
+  {
+    box-sizing: border-box;
+}
+
+.container body {
+    background: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    height: auto;
+    margin: -20px 0 50px;
+}
+
+.container h1 {
+    font-weight: bold;
+    margin: 0;
+}
+
+
+.container p {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 30px;
+}
+
+.container span {
+    font-size: 12px;
+}
+
+
+.container button {
+    border-radius: 20px;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+
+.container button:active {
+    transform: scale(0.95);
+}
+
+.container button:focus {
+    outline: none;
+}
+
+.container button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+
+.container form {
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+.container input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+}
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: show 0.6s;
+}
+
+@keyframes show {
+
+    0%,
+    49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+.overlay {
+    background: #FF416C;
+    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    color: #FFFFFF;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+.social-container {
+    margin: 20px 0;
+}
+
+.social-container a {
+    border: 1px solid #DDDDDD;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    height: 40px;
+    width: 40px;
+}
+
+
+</style>
+
+
+</head>
+<body>
+
+  <div id="home">
+
+
+    <div id="menu">
+  <nav class="navbar navbar-expand-lg navbar-white bg-white">
+  <a class="navbar-brand" href="#"><img src="img/logo.png" width="90px"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html" style="padding-left: 130px;">Trang Chủ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="gioithieu.html">Giới thiệu</a>
+      </li>
+      <li class="nav-item dropdown" style="padding-top: 8px;">
+        <a href="#"  class="dropdown" data-toggle="dropdown" >Sản phẩm</a>
+        <div class="dropdown-menu">
+          <ul>
+                <li><a  href="ao.html">Áo</a></li>
+                <li><a  href="dam.html">Đầm</a></li>
+                <li><a  href="chanvay.html">Chân váy</a></li>
+                <li><a  href="quan.html">Quần</a></li>
+          
+          </ul>
+          
+          
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="trogiup.html">Trợ giúp</a>
+      </li>
+      <li class="nav-item" style="padding-right: 10px;">
+          <a class="nav-link" href="dangki.html"><i class="fas fa-user" aria-hidden="true"></i> Đăng nhập</a>
+        </li>
+ 
+        <li class="nav-item" style="padding-right: 10px;">
+          <a class="nav-link" href="dangki.html"><i class="fas fa-user-circle" aria-hidden="true"></i> Đăng ký</a>
+        </li>
+        <li class="nav-item" style="padding-right: 20px;"> 
+          <a class="nav-link" href="#">Giỏ hàng <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>  
+        </li>
+        
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Tìm...." aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm</button>
+    </form>
+  </div>
+</nav>
+</div>
+<button onclick="topFunction()" id="myBtn" title="Quay lại đầu trang"><i class="fas fa-angle-up"></i></button>
+<br>
+  
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Đăng kí</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>hoặc sử dụng email của bạn để đăng ký</span>
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button>Đăng kí</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Đăng nhập</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>hoặc sử dụng tài khoản của bạn</span>
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <a href="#">Quên mật khẩu?</a>
+                <button>Đăng nhập</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Chào mừng trở lại!</h1>
+                    <p>Để giữ kết nối với chúng tôi, vui lòng đăng nhập với thông tin cá nhân của bạn</p>
+                    <button class="ghost" id="signIn">Đăng nhập</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Chào bạn !</h1>
+                    <p>Nhập thông tin cá nhân của bạn và bắt đầu hành trình với chúng tôi</p>
+                    <button class="ghost" id="signUp">Đăng kí</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br>
+<div id="footer">
+<footer class="footer-distributed">
+
+      <div class="footer-left">
+        <img src="img/logo1.png">
+
+        <p class="footer-links">
+          <a href="home.html" class="link-1">Trang chủ</a>
+          
+          <a href="home.html">Sản phẩm</a>
+        
+          <a href="gioithieu.html">Giới thiệu</a>
+        
+          <a href="trogiup.html">Trợ giúp</a>
+          
+        </p>
+
+        <p class="footer-company-name">Copy right© 2020 by ThuThao</p>
+      </div>
+
+      <div class="footer-center">
+
+        <div>
+          <i class="fa fa-map-marker"></i>
+          <p><span>Hòa Quý</span> Ngũ Hành Sơn, Đà Nẵng</p>
+        </div>
+
+        <div>
+          <i class="fas fa-phone-square-alt"></i>
+          <p>+84947347906</p>
+        </div>
+
+        <div>
+          <i class="fa fa-envelope"></i>
+          <p><a href="mailto:nttthao.19it5@sict.udn.vn">nttthao.19it5@sict.udn.vn</a></p>
+        </div>
+
+      </div>
+
+      <div class="footer-right">
+
+        <p class="footer-company-about">
+          <span>VỀ CHÚNG TÔI</span>
+          Mọi thắc mắc của quý khách xin được gửi về địa chỉ email để được giải đáp.
+        </p>
+
+        <div class="footer-icons">
+
+          <a href="#"><i class="fab fa-facebook-square"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube-square"></i></a>
+          <a href="#"><i class="fab fa-google-drive"></i></a>
+
+        </div>
+
+      </div>
+
+    </footer>
+  
+</div>
+
+</div>
+</div>
+<script>
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js\bootstrap.min.js"></script>
+<script type="text/javascript" src="js\jquery.min.js"></script>
+<script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add('right-panel-active');
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove('right-panel-active');
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>
